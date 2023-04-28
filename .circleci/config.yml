@@ -2,6 +2,8 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+orbs:
+  docker: circleci/docker@2.2.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
@@ -13,6 +15,7 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
+      - docker/install-docker
       - docker/build:
           image: frontend_docker 
           lint-dockerfile: false 
