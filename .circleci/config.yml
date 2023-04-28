@@ -15,13 +15,9 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
-      - docker/install-docker
-      - docker/build:
-          image: frontend_docker 
-          lint-dockerfile: false 
-          debug: false 
-          treat-warnings-as-errors: false 
-          use-buildkit: false 
+      - checkout
+      - run: |
+          docker build . -t frontend_docker
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
