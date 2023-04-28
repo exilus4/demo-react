@@ -2,26 +2,24 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
-orbs:
-  docker: circleci/docker@2.2.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  build-docker:
+  publish:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:stable
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
       - run: |
-          docker build . -t frontend_docker
+          npm build
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  docker-workflow:
+  workflow:
     jobs:
-      - build-docker
+      - publish
