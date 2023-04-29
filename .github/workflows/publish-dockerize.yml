@@ -27,7 +27,8 @@ jobs:
         env:
           CI: false
       - run: npm test
-
+        env:
+          CI: false
   build-docker:
     runs-on: windows-latest
     needs: publish
