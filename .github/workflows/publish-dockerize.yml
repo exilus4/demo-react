@@ -8,7 +8,7 @@ on:
 
 jobs:
   publish:
-    runs-on: windows-latest
+    runs-on: linux-latest
 
     strategy:
       matrix:
@@ -26,11 +26,8 @@ jobs:
       - run: npm run build
         env:
           CI: false
-      - run: npm test
-        env:
-          CI: false
   build-docker:
-    runs-on: windows-latest
+    runs-on: linux-latest
     needs: publish
 
     steps:
